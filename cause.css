@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    color: #392c45;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.95), transparent 28%),
+        radial-gradient(circle at 86% 14%, rgba(255, 223, 128, 0.6), transparent 24%),
+        linear-gradient(135deg, #ffe4ed 0%, #e8f7ff 48%, #f7e7ff 100%);
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+    padding: clamp(1rem, 4vw, 2.5rem);
+}
+
+button {
+    font: inherit;
+}
+
+.custom-cursor {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    filter: drop-shadow(0 0 8px rgba(255, 79, 154, 0.4));
+}
+
+.custom-cursor svg {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: min(1040px, 100%);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.intro {
+    text-align: center;
+    padding: 2rem 0 1rem;
+}
+
+.eyebrow {
+    color: #b0296d;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0;
+    margin-bottom: 0.6rem;
+}
+
+h1 {
+    font-size: clamp(2.3rem, 7vw, 5rem);
+    line-height: 1;
+    color: #ec3f91;
+    text-shadow: 0 10px 25px rgba(236, 63, 145, 0.18);
+    margin-bottom: 1rem;
+}
+
+.intro p:last-child {
+    max-width: 620px;
+    margin: 0 auto;
+    color: #5d5267;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+#reasons-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.reason-card {
+    min-height: 190px;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 18px 44px rgba(100, 58, 95, 0.14);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.reason-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 52px rgba(100, 58, 95, 0.19);
+}
+
+.reason-text {
+    position: relative;
+    z-index: 2;
+    font-size: 1.08rem;
+    line-height: 1.65;
+}
+
+.gif-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.94);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 1;
+}
+
+.gif-overlay img {
+    max-width: min(230px, 82%);
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.reason-card:hover .gif-overlay {
+    opacity: 1;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.shuffle-button {
+    min-height: 3.3rem;
+    border: 0;
+    border-radius: 999px;
+    padding: 0 1.4rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff4f9a, #7f6cff);
+    cursor: pointer;
+    font-weight: 800;
+    box-shadow: 0 14px 30px rgba(255, 79, 154, 0.28);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.shuffle-button:hover,
+.shuffle-button.story-mode:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 18px 36px rgba(255, 79, 154, 0.35);
+}
+
+.shuffle-button.story-mode {
+    background: linear-gradient(135deg, #6c6bff, #ff62b7);
+}
+
+.reason-counter {
+    min-width: 92px;
+    color: #b0296d;
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.floating {
+    position: fixed;
+    pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+}
+
+.ending-section {
+    display: grid;
+    grid-template-columns: minmax(160px, 260px) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: center;
+    margin: 2rem auto 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 18px 44px rgba(100, 58, 95, 0.12);
+}
+
+.teddy-hug img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.ending-text {
+    color: #ec3f91;
+    font-size: clamp(1.7rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    font-weight: 900;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@media (max-width: 760px) {
+    .custom-cursor {
+        display: none;
+    }
+
+    #reasons-container,
+    .ending-section {
+        grid-template-columns: 1fr;
+    }
+
+    .ending-text {
+        text-align: center;
+    }
+}
